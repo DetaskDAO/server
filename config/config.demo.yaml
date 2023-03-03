@@ -1,0 +1,56 @@
+# system configuration
+system:
+  env: develop
+  addr: 8888
+
+# pgsql configuration
+pgsql:
+  path: "127.0.0.1"
+  port: "5432"
+  config: ""
+  db-name: "detask"
+  username: "postgres"
+  password: "123456"
+  max-idle-conns: 10
+  max-open-conns: 100
+  log-mode: "info"
+  log-zap: false
+
+# zap configuration
+zap:
+  level: info
+  format: console
+  prefix: '[detask]'
+  director: log
+  show-line: true
+  encode-level: LowercaseColorLevelEncoder
+  stacktrace-key: stacktrace
+  log-in-console: true
+
+# blockchain configuration
+blockchain:
+  - name: "mumbai"
+    provider: ["https://rpc.ankr.com/polygon_mumbai","https://matic-mumbai.chainstacklabs.com"]
+  - name: "buildbear"
+    provider: "https://rpc.ankr.com/polygon_mumbai"
+
+
+# contract configuration
+contract:
+  default-net: "mumbai"
+  signature: "Welcome to Detask!\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\n"
+
+# jwt configuration
+jwt:
+  signing-key: "Detask"
+  expires-time: 86400
+  issuer: "Detask"
+
+# local configuration
+local:
+  path: 'uploads/file'
+
+# ipfs configuration
+ipfs:
+  - api: "http://ipfs.learnblockchain.cn"
+    upload-api: "http://192.168.1.10:3022/v1"
