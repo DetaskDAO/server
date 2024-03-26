@@ -1,6 +1,16 @@
 -- ----------------------------
 -- Records of skill
 -- ----------------------------
+DROP TABLE IF EXISTS "public"."skill";
+CREATE TABLE "public"."skill" (
+      "id" int8 NOT NULL DEFAULT nextval('skill_id_seq'::regclass),
+      "parent_id" int8,
+      "zh" varchar(20) COLLATE "pg_catalog"."default",
+      "en" varchar(20) COLLATE "pg_catalog"."default",
+      "sort" int2 DEFAULT 0,
+      "index" int2 DEFAULT 0
+)
+;
 BEGIN;
 INSERT INTO "public"."skill" ("id", "parent_id", "zh", "en", "sort", "index") VALUES (28, 13, 'Rust', 'Rust', 3, 45);
 INSERT INTO "public"."skill" ("id", "parent_id", "zh", "en", "sort", "index") VALUES (29, 13, 'C/C++', 'C/C++', 4, 46);
@@ -70,6 +80,19 @@ COMMIT;
 -- ----------------------------
 -- Records of message_tmpl
 -- ----------------------------
+DROP TABLE IF EXISTS "public"."message_tmpl";
+CREATE TABLE "public"."message_tmpl" (
+     "id" int8 NOT NULL DEFAULT nextval('message_tmpl_id_seq'::regclass),
+     "issuer" varchar(500) COLLATE "pg_catalog"."default",
+     "issuer_zh" varchar(500) COLLATE "pg_catalog"."default",
+     "worker" varchar(500) COLLATE "pg_catalog"."default",
+     "worker_zh" varchar(500) COLLATE "pg_catalog"."default",
+     "status" text COLLATE "pg_catalog"."default",
+     "type" int2 DEFAULT 0,
+     "disable" bool DEFAULT false,
+     "status,unique" varchar(30) COLLATE "pg_catalog"."default"
+)
+;
 BEGIN;
 INSERT INTO "public"."message_tmpl" ("id", "issuer", "issuer_zh", "worker", "worker_zh", "status", "type", "disable") VALUES (24, 'The requester has changed the Phase division.<br />To confirm the content of the current Phase division.', '需求方修改了阶段划分，<br />请确认当前阶段划分内容', '', NULL, 'TipWaitIssuerAgree', 1, 'f');
 INSERT INTO "public"."message_tmpl" ("id", "issuer", "issuer_zh", "worker", "worker_zh", "status", "type", "disable") VALUES (25, NULL, NULL, 'The project party has modified the phase division.<br />To confirm the content of the current Phase division.', '项目方修改了阶段划分，<br />请确认当前阶段划分内容', 'TipWaitWorkerConfirmStage', 1, 'f');

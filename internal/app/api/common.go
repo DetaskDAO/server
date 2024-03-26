@@ -27,7 +27,6 @@ func Upload(c *gin.Context) {
 			return
 		}
 		response.OkWithDetailed(response.UploadResponse{Hash: hash}, "上传成功", c)
-		return
 	} else {
 		_, header, err := c.Request.FormFile("file")
 		if err != nil {

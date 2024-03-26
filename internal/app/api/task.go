@@ -97,10 +97,10 @@ func ModifyApplySwitch(c *gin.Context) {
 		return
 	}
 	if err := service.ModifyApplySwitch(c, task); err != nil {
-		global.LOG.Error("修改失败!", zap.Error(err))
-		response.FailWithMessage(err.Error(), c)
+		global.LOG.Error("操作失败!", zap.Error(err))
+		response.FailWithMessage("操作失败", c)
 	} else {
-		response.OkWithMessage("修改成功", c)
+		response.OkWithMessage("操作成功", c)
 	}
 }
 

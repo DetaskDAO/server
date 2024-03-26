@@ -94,9 +94,9 @@ func UpdateUserInfo(c *gin.Context) {
 	_ = c.ShouldBindJSON(&userInfo)
 	if err := service.UpdateUserInfo(c, userInfo); err != nil {
 		global.LOG.Error("修改失败!", zap.Error(err))
-		response.FailWithMessage("修改失败", c)
+		response.FailWithMessage("操作失败", c)
 	} else {
-		response.OkWithMessage("修改成功", c)
+		response.OkWithMessage("操作成功", c)
 	}
 }
 

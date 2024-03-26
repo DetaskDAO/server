@@ -106,7 +106,7 @@ func ParseOrderStarted(chain string, transHash model.TransHash, vLog *types.Log)
 	// 解析Raw数据
 	signature := gjson.Get(transHash.Raw, "signature").String()
 	// 正常情况
-	raw := tx.Model(&model.Order{}).Unscoped().Where("order_id = ? AND signature = ?", orderId, signature).Updates(map[string]interface{}{"signature": "", "sign_address": "", "sign_nonce": 0, "status": "IssuerAgreeStage", "progress": 2, "deleted_at": nil})
+	raw := tx.Model(&model.Order{}).Unscoped().Where("order_id = ? AND signature = ?", orderId, signature).Updates(map[string]interface{}{"signature": "", "sign_address": "", "sign_nonce": 0, "status": "IssuerAgreeStage", "progress": 2, "deleted_at": nil, "start_at": time.Now()})
 	// 异常情况
 	if raw.RowsAffected == 0 {
 		// 获取回滚信息
@@ -117,7 +117,7 @@ func ParseOrderStarted(chain string, transHash model.TransHash, vLog *types.Log)
 			return err
 		}
 		// 回滚操作 && 确认
-		order := map[string]interface{}{"attachment": orderFlow.Attachment, "stages": orderFlow.Stages, "Status": "IssuerAgreeStage", "signature": "", "sign_address": "", "sign_nonce": 0, "progress": 2, "deleted_at": nil}
+		order := map[string]interface{}{"attachment": orderFlow.Attachment, "stages": orderFlow.Stages, "Status": "IssuerAgreeStage", "signature": "", "sign_address": "", "sign_nonce": 0, "progress": 2, "deleted_at": nil, "start_at": time.Now()}
 		raw := tx.Model(&model.Order{}).Unscoped().Where("order_id = ?", orderId).Updates(&order)
 		if raw.RowsAffected == 0 {
 			tx.Rollback()

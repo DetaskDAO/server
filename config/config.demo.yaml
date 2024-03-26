@@ -32,7 +32,7 @@ blockchain:
   - name: "mumbai"
     provider: ["https://rpc.ankr.com/polygon_mumbai","https://matic-mumbai.chainstacklabs.com"]
   - name: "buildbear"
-    provider: "https://rpc.ankr.com/polygon_mumbai"
+    provider: "https://polygon-mumbai.infura.io/v3/"
 
 
 # contract configuration
@@ -42,15 +42,16 @@ contract:
 
 # jwt configuration
 jwt:
-  signing-key: "Detask"
+  signing-key: "qmPlus"
   expires-time: 86400
   issuer: "Detask"
 
 # local configuration
 local:
   path: 'uploads/file'
+  ipfs: 'uploads/ipfs'
 
 # ipfs configuration
 ipfs:
-  - api: "http://ipfs.learnblockchain.cn"
+  - api: "https://ipfs.io/ipfs"
     upload-api: "http://192.168.1.10:3022/v1"

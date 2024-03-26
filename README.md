@@ -1,11 +1,8 @@
 ## Detask-Go Backend Project
 
 ```shell
-├── assets
 ├── cmd
 ├── config
-├── docs
-├── frontend
 ├── internal
 │   └── app
 │       ├── api
@@ -18,10 +15,8 @@
 │       ├── resource
 │       ├── router
 │       ├── service
-│       ├── source
 │       ├── task
 │       └── utils
-└── uploads
 ```
 
 | Directory    | instruction      | description                               |
@@ -105,7 +100,20 @@ ipfs:
     upload-api: "http://192.168.1.10:3022/v1"   # Upload API
 ```
 
-#### 2、Import database
+#### 2、Configuration Contract Address
+```
+vi ./abi/mumbai/DeTask.json     # enter the DeTask contract address
+vi ./abi/mumbai/DeOrder.json    # enter the DeOrder contract address
+```
+
+#### 3、Run Project
+
+```shell
+./code-market-admin
+```
+
+#### 4、Import database
+
 ```
 psql -p 5432 -h 127.0.0.1 -U web3 -d detask -f ./db/db.sql;
 ```
