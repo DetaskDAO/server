@@ -51,7 +51,7 @@ func OkWithRaw(data interface{}, c *gin.Context) {
 }
 
 func OkWithMessage(message string, c *gin.Context) {
-	Result(SUCCESS, map[string]interface{}{}, message, c)
+	Result(SUCCESS, map[string]interface{}{}, i18n(c, message), c)
 }
 
 func OkWithData(data interface{}, c *gin.Context) {
@@ -67,11 +67,11 @@ func Fail(c *gin.Context) {
 }
 
 func FailWithMessage(message string, c *gin.Context) {
-	Result(ERROR, map[string]interface{}{}, message, c)
+	Result(ERROR, map[string]interface{}{}, i18n(c, message), c)
 }
 
 func FailWithDetailed(data interface{}, message string, c *gin.Context) {
-	Result(ERROR, data, message, c)
+	Result(ERROR, data, i18n(c, message), c)
 }
 
 func i18n(c *gin.Context, msg string) string {
