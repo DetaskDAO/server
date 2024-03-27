@@ -40,11 +40,11 @@
 ## Cross-compilation
 ```shell
 # Compile to Linux
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o detask
 # Compile to macOS ARM64
-CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build
+CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o detask
 # Compile to Windows
-CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build 
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o detask
 ```
 ## Deployment
 
@@ -109,7 +109,7 @@ vi ./abi/mumbai/DeOrder.json    # enter the DeOrder contract address
 #### 3、Run Project
 
 ```shell
-./code-market-admin
+./detask
 ```
 
 #### 4、Import database
