@@ -74,6 +74,17 @@ pgsql:
   log-mode: "info"      # Log mode (info/warn/error/slice)
   log-zap: false        # Use zap
 
+# zap configuration
+zap:
+  level: info            # log level(debug、info、warn、error、dpanic、panic、fatal)
+  format: console        # log format
+  prefix: '[detask]'     # prefix
+  director: log          # log save director
+  show-line: true        # whether show line
+  encode-level: LowercaseColorLevelEncoder  # encode level
+  stacktrace-key: stacktrace                # stacktrace key
+  log-in-console: true                      # whether log in console
+
 # blockchain configuration
 blockchain:
   - name: "mumbai"      # Name of the chain
@@ -93,7 +104,8 @@ jwt:
 # local configuration
 local:
   path: 'uploads/file'   # Upload directory
-
+  ipfs: 'uploads/ipfs'   # IPFS cache directory
+  
 # ipfs configuration
 ipfs:
   - api: "https://ipfs.io/ipfs"                 # IPFS API
