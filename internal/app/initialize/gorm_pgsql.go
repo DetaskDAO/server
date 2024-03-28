@@ -22,6 +22,7 @@ func GormPgSql(Prefix string) *gorm.DB {
 	if db, err := gorm.Open(postgres.New(pgsqlConfig), internal.Gorm.Config(Prefix)); err != nil {
 		global.LOG.Error("Postgres connect error", zap.String("err", err.Error()))
 		os.Exit(0)
+		return nil
 	} else {
 		sqlDB, _ := db.DB()
 		sqlDB.SetMaxIdleConns(p.MaxIdleConns)
