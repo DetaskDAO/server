@@ -36,6 +36,9 @@
 | `utils`      | Utilities        | Utilities                           |
 | `timer`      | Timer            | timer                          |
 
+## Runtime Environment
+- Golang >= v1.19 && < v1.21
+- PostgreSQL
 
 ## Cross-compilation
 ```shell
